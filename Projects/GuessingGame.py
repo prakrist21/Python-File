@@ -6,7 +6,8 @@ dic={'pani':'water',
      'rati':'night',
      'bihana':'morning',
      'seto':'white',
-     'ghar':'house'}
+     'ghar':'house',
+     'bato':'road'}
 pair_word=random.choice(list(dic.items()))
 guess_dic={}
 print("-------Guess the english word from nepali word-------")
