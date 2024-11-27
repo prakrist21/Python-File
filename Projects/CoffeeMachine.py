@@ -7,8 +7,6 @@ Sn=1
 discount=0
 
 def CoffeeChoice():
-    global Dict
-    global ChoiceDict
     global Choice
     print("---Menu---")
     for key,values in ChoiceDict.items():
@@ -28,6 +26,8 @@ def CustomCoffee():
     for key,values in ChoiceDict.items():
         print(f"{key}. {values}")
     Choice=input("Enter your coffee preference: ")
+    if Choice=='1':
+        CustomCoffee()
     return Choice
 
 while True:
@@ -38,7 +38,7 @@ while True:
     if Choice=='1':
         CustomCoffee()
     Quantity=int(input("Enter the quantity: "))
-    Price=int(Dict[ChoiceDict[Choice]].split('-')[0])*2 + int(Dict[ChoiceDict[Choice]].split('-')[1]) * 6 + int(Dict[ChoiceDict[Choice]].split('-')[2])*3
+    Price=float(Dict[ChoiceDict[Choice]].split('-')[0])*2 + float(Dict[ChoiceDict[Choice]].split('-')[1]) * 6 + float(Dict[ChoiceDict[Choice]].split('-')[2])*3
     Total=Total+Price*Quantity
     if ChoiceDict[Choice] in CustomerDict:
         CustomerDict[ChoiceDict[Choice]]=[Price,CustomerDict[ChoiceDict[Choice]][1]+Quantity]
