@@ -101,11 +101,13 @@ def money():
                 return_dict['count'][key]=return_dict['count'][key]+1
                 if extra==0:
                     break
+        print("-----------------------------------")
         print("Return money: ")
         for key,value in return_dict['count'].items():
             print(f"Note {key} Rupee: {value}")
+        print("---Transaction Completed---\n      Visit Again")
     else:
-        print("---Transaction Completed---\nVisit Again")
+        print("---Transaction Completed---\n      Visit Again")
         pass
 def printing():
     global Sn
