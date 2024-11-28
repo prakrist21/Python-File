@@ -8,6 +8,7 @@ discount=0
 total_cash=0
 money_dict={'Five':0,'Ten':0,'Twenty':0,'Fifty':0,'Hundred':0,'Five_Hundred':0}
 return_dict={'count':{'Five':0,'Ten':0,'Twenty':0,'Fifty':0,'Hundred':0,'Five_Hundred':0},'value':{'Five':5,'Ten':10,'Twenty':20,'Fifty':50,'Hundred':100,'Five_Hundred':500}}
+Stock={'Coffee':1000,'Milk':1000,'Water':1000}
 def CoffeeChoice():
     global Choice
     print("---Menu---")
@@ -32,6 +33,27 @@ def CustomCoffee():
         CustomCoffee()
     return Choice
 
+def StockInMachine(coffee,milk,water,quantity):
+    global Stock
+    global Price
+    global Total
+    global CustomerDict
+    Stock['Coffee']-=float(coffee)*quantity
+    Stock['Milk']-=float(milk)*quantity
+    Stock['Water']-=float(water)*quantity
+    print("Remaining stock in the machine: ",Stock)
+    if Stock['Coffee']<0 or Stock['Milk']<0 or Stock['Coffee']<0:
+        print("Sorry the stock for making this coffee is not enough! ")
+        Stock['Coffee']+=float(coffee)*quantity
+        Stock['Milk']+=float(milk)*quantity
+        Stock['Water']+=float(water)*quantity
+    else:
+        Price=float(coffee)*2 + float(milk) * 6 + float(water)*3
+        Total=Total+Price*Quantity
+        if ChoiceDict[Choice] in CustomerDict:
+            CustomerDict[ChoiceDict[Choice]]=[Price,CustomerDict[ChoiceDict[Choice]][1]+Quantity]
+        else: 
+            CustomerDict[ChoiceDict[Choice]]=[Price,Quantity]
 while True:
     CoffeeChoice()
     if int(Choice)<1 or int(Choice)>len(Dict):
@@ -40,12 +62,11 @@ while True:
     if Choice=='1':
         CustomCoffee()
     Quantity=int(input("Enter the quantity: "))
-    Price=float(Dict[ChoiceDict[Choice]].split('-')[0])*2 + float(Dict[ChoiceDict[Choice]].split('-')[1]) * 6 + float(Dict[ChoiceDict[Choice]].split('-')[2])*3
-    Total=Total+Price*Quantity
-    if ChoiceDict[Choice] in CustomerDict:
-        CustomerDict[ChoiceDict[Choice]]=[Price,CustomerDict[ChoiceDict[Choice]][1]+Quantity]
-    else: 
-        CustomerDict[ChoiceDict[Choice]]=[Price,Quantity]
+    coffee=Dict[ChoiceDict[Choice]].split('-')[0]
+    milk=Dict[ChoiceDict[Choice]].split('-')[1]
+    water=Dict[ChoiceDict[Choice]].split('-')[2]
+    StockInMachine(coffee,milk,water,Quantity)
+    
     conti=input("Do you want to add more coffee (Y/N): ")
     if conti.lower()=='n':
         break
