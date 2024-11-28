@@ -84,7 +84,8 @@ def money():
     total_cash=money_dict['Five']*5+money_dict['Ten']*10+money_dict['Twenty']*20+money_dict['Fifty']*50+money_dict['Hundred']*100+money_dict['Five_Hundred']*500
     extra=total_price-total_cash
     if total_price>total_cash:
-        print("total cash you entered",total_cash)
+        print("-----------------------------------")
+        print("Total cash you entered",total_cash)
         print(f"Its {extra} less than what it requires, add more")
         print(money_dict)
         money()
