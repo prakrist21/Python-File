@@ -1,4 +1,4 @@
-Dict={'pass':'pass','Expresso':'30-40-30','Mocha':'10-70-20','Cappuccino':'40-20-40','Americano':'20-50-30'}
+Dict={'pass':'pass','Expresso':'30-60-40','Mocha':'10-70-20','Cappuccino':'40-30-70','Americano':'20-50-50'}
 ChoiceDict={'1':'Custom','2':'Expresso','3':'Mocha','4':'Cappuccino','5':'Americano'}
 CustomerDict={}
 Total=0
@@ -20,9 +20,9 @@ def CoffeeChoice():
 def CustomCoffee():
     global Choice
     NewCoffee=input("Enter the name of your custom coffee: ")
-    Coffee=input("Enter the amount of Coffee (in percentage): ")
-    Milk=input("Enter the amount of Milk (in percentage): ")
-    Water=input("Enter the amount of Water (in percentage): ")
+    Coffee=input("Enter the amount of Coffee: ")
+    Milk=input("Enter the amount of Milk: ")
+    Water=input("Enter the amount of Water: ")
     Dict[NewCoffee]=Coffee+"-"+Milk+"-"+Water
     ChoiceDict[f'{len(ChoiceDict)+1}']=NewCoffee
     print("---Menu---")
