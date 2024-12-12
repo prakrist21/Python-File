@@ -1,0 +1,11 @@
+12-11-2024 07:07:50 Question: hi
+12-11-2024 07:07:50 Answer: Welcome, How may I help you
+12-11-2024 07:08:01 Question: describe your admission process
+12-11-2024 07:08:01 Answer: The admission will start from the second week of September. For more details contact us or visit our website www.www.com
+12-11-2024 07:08:09 Question: explain about the college facilitites
+12-11-2024 07:08:09 Answer: Sorry {name} I am not trained for this
+12-11-2024 07:08:15 Question: how about the teachers
+12-11-2024 07:08:15 Answer: Hey {name}, I dont have an reply for this
+12-11-2024 07:08:17 Question: bye
+12-11-2024 07:08:17 Answer: Bye! It was nice talking with you
+

@@ -15,7 +15,7 @@ for x in range(2,m):
         for o in lst:
             lstm+=x%o
         if lstm==0:
-            print(x)
+            print(f"The LCM is: ",x)
             break
     except:
         pass
