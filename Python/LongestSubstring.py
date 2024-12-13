@@ -14,5 +14,4 @@ for x in range(len(word)):
 
 for x in lst:
     if len(x)==max([len(x) for x in lst]):
-        print("The longest substring without reapating a character is: ",x)
-        print("The length of longest substring without reapating a character is: ",max([len(x) for x in lst]))
+        print(f"The longest substring without reapating a character is: {x} with length {max([len(x) for x in lst])}")
