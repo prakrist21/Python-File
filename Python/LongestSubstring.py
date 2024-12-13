@@ -9,8 +9,6 @@ for x in range(len(word)):
             break
         new=new+y
     lst.append(new)
-# print(lst)
-# print(max([len(x) for x in lst]))
 
 for x in lst:
     if len(x)==max([len(x) for x in lst]):
