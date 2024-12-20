@@ -11,7 +11,7 @@ import pandas as pd
 try:
     df=pd.read_csv("data.csv")
 except:
-    df=pd.DataFrame(columns=['Accountnumber','Name','Age','PhoneNumber','Balance','Password'])
+    df=pd.DataFrame(columns=['Accountnumber','Password','Name','Age','PhoneNumber','Balance','Loan'])
 print(df.info())
 choice=input("Enter what do you want to d\n1.Register\n2.Login\nEnter: ")
 login=False
@@ -36,13 +36,14 @@ def balance_check_alert(accountnumber):
 
 if choice=='1':
     balance=0
+    loan=0
     name=input("Enter your full name: ")
     age=int(input("Enter your age: "))
     phonenumber=input("Enter your phone number: ")
     password=input("Enter your 4pin password: ")
     accountnumber=account_number_generator()
     print("Your account number is",accountnumber)
-    insert_df=[accountnumber,name,age,phonenumber,balance,password]
+    insert_df=[accountnumber,password,name,age,phonenumber,balance,loan]
     l=len(df)
     df.loc[l]=insert_df
     df.set_index('Accountnumber',inplace=True)
@@ -70,9 +71,9 @@ elif choice=='2':
 
 
 if login==True:
-    choice1=input("Enter what do you want to do next\n1.Withdraw\n2.Deposit\n3.Transfer\n4.Quit\nEnter: ")
+    choice1=input("Enter what do you want to do next\n1.Withdraw\n2.Deposit\n3.Transfer\n4.Loan\n5.Quit\nEnter: ")
     if choice1=='1':
-        amount=int(input("Enter the amount you want to deposit: "))
+        amount=int(input("Enter the amount you want to withdraw: "))
         password=int(input("Enter your password: "))
         while True:
             if df.loc[accountnumber]['Password']==password:
@@ -83,7 +84,7 @@ if login==True:
                 password=int(input("Incorrect!!!! Enter your correct password: "))
         balance_check_alert(accountnumber)
     elif choice1=='2':
-        amount=int(input("Enter the amount you want to withdraw: "))
+        amount=int(input("Enter the amount you want to deposit: "))
         password=int(input("Enter your password: "))
         while True:
             if df.loc[accountnumber]['Password']==password:
@@ -114,6 +115,42 @@ if login==True:
                 password=int(input("Enter your password: "))
         balance_check_alert(sender)
     elif choice1=='4':
+        loanchoices=input("Enter your choice\n1.Take a loan\n2.Return Loan\nEnter: ")
+        if loanchoices=='1':
+            amount=int(input("Enter the loan amount: "))
+            password=int(input("Enter your password: "))
+            while True:
+                if password==df.loc[accountnumber]['Password']:
+                    df.loc[accountnumber,'Loan']+=amount
+                    df.loc[accountnumber,'Balance']+=amount
+                    print(f"Loan Successful. Your current balance is {df.loc[accountnumber]['Balance']}")
+                    print(f"Your loan amount is {df.loc[accountnumber]['Loan']}")
+                    break
+                else:
+                    print("Invalid Password!!!")
+                    password=int(input("Enter your password: "))
+        elif loanchoices=='2':
+            amount=int(input("Enter the loan amount you want to return: "))
+            password=int(input("Enter your password: "))
+            while True:
+                if password==df.loc[accountnumber]['Password']:
+                    if amount<=df.loc[accountnumber]['Loan']:
+                        if amount<df.loc[accountnumber]['Balance']:
+                            df.loc[accountnumber,'Loan']-=amount
+                            df.loc[accountnumber,'Balance']-=amount
+                            print(f"Loan Return Successful. Your current balance is {df.loc[accountnumber]['Balance']}")
+                            print(f"Your remaining loan amount is {df.loc[accountnumber]['Loan']}")
+                            break
+                        else:
+                            print(f"You donot have sufficient money to pay the. You have {df.loc[accountnumber]['Balance']} left")
+                            amount=int(input("Enter the loan amount you want to return: "))
+                    else:
+                        print(f"You are paying more than required.Your loan to be paid is {df.loc[accountnumber]['Loan']}")
+                        amount=int(input("Enter the loan amount you want to return: "))
+                else:
+                    print("Invalid Password!!!")
+                    password=int(input("Enter your password: "))
+    elif choice1=='5':
         pass
 
 df=df.reset_index()
