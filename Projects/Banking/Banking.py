@@ -70,9 +70,7 @@ elif choice=='2':
 
 
 if login==True:
-    print("---------------------------------------------")
     choice1=input("Enter what do you want to do next\n1.Withdraw\n2.Deposit\n3.Transfer\n4.Quit\nEnter: ")
-    print("---------------------------------------------")
     if choice1=='1':
         amount=int(input("Enter the amount you want to deposit: "))
         password=int(input("Enter your password: "))
