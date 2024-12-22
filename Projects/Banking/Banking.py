@@ -4,7 +4,6 @@ We are required to create saving deposit and withdrawal system similar to bankin
 2.Enable customers to make deposits
 3.Facilitae money withdrawal inbehalf of customer
 '''
-import json
 import random
 import pandas as pd
 # df=pd.read_csv("data.csv")
