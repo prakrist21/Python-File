@@ -11,5 +11,3 @@ def return_location(x):
     return x[1]
 lst.sort(key=return_location,reverse=True)
 print(f"The most repeating characters are {lst[:3]}")
-    
-    
