@@ -18,7 +18,6 @@ class Daraz:
         options.add_experimental_option("detach",True)
         self.driver=webdriver.Chrome(options=options)
         self.driver.get(self.url)
-        # time.sleep(2)
         self.driver.maximize_window()
 
     def getValues(self):
@@ -27,13 +26,10 @@ class Daraz:
         names=[]
         prices=[]
         for x in name:
-            print(x.text)
             names.append(x.text)
         for y in price:
             prices.append(y.text)
 
-        print(name[0].text)
-        # print(price)
         for x in range(len(prices)):
             short_lst=[names[x],prices[x]]
             self.mainlst.append(short_lst)
@@ -54,6 +50,7 @@ class Daraz:
         if old_url==new_url:
             df.to_csv("New.csv",index=False)
             quit()
+        # Adjust page number accordingly 
         elif "page=4" in new_url:
             df.to_csv("New.csv",index=False)
             quit()
