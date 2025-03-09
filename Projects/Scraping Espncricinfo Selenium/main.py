@@ -17,9 +17,15 @@ class Cricket:
         options=webdriver.ChromeOptions()
         options.add_experimental_option("detach",True)
         self.driver=webdriver.Chrome(options=options)
-        self.driver.get("https://www.espncricinfo.com/series/icc-champions-trophy-2024-25-1459031/england-vs-south-africa-11th-match-group-b-1466424/match-overs-comparison")
+        self.driver.get("https://www.espncricinfo.com/series/icc-champions-trophy-2024-25-1459031/new-zealand-vs-south-africa-2nd-semi-final-1466427/match-overs-comparison")
         time.sleep(2)
         self.driver.maximize_window()
+        time.sleep(15)
+        # self.driver.switch_to.alert.dismiss()
+        try:
+            self.driver.find_element(By.XPATH,"//button[@id='wzrk-cancel']").click()
+        except:
+            pass
         
     def clicking(self):
         option=self.driver.find_elements(By.XPATH,"//td[@class='ds-min-w-max !ds-align-top']")
@@ -76,5 +82,6 @@ c1=Cricket()
 c1.setup()
 c1.clicking()
 c1.OverData()
-c1.manageData(['Marco Jansen','Wiaan Mulder','Kagiso Rabada','Lungi Ngidi','Keshav Maharaj'],['Jofra Archer','Saqib Mahmood','Jamie OVerton','Adil Rashid','Liam Livingston'])
+c1.manageData(["Marco Jansen","Lungi Ngidi","Kagiso Rabada","Wiaan Mulder","Keshav Maharaj","Aiden Markram"]
+,["Matt Henry", "Kyle Jamieson", "Will O'Rourke", "Michael Bracewell", "Mitchell Santner", "Rachin Ravindra", "Glenn Phillips"])
 c1.loadDf()
