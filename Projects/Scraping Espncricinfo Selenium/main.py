@@ -4,8 +4,8 @@ from selenium.webdriver.common.keys import Keys
 import time
 import pandas as pd
 
-team1df=pd.DataFrame(columns=['Bowler','Runs'])
-team2df=pd.DataFrame(columns=['Bowler','Runs'])
+team1df=pd.DataFrame(columns=['Bowler','Runs','OverDetail'])
+team2df=pd.DataFrame(columns=['Bowler','Runs','OverDetail'])
 class Cricket:
     def __init__(self):
         self.driver=None
@@ -41,15 +41,22 @@ class Cricket:
     def OverData(self):
         bowlers=[]
         runs=[]
+        odetail=[]
         self.mains=[]
         bowler=self.driver.find_elements(By.XPATH,"//div[@class='ds-text-compact-xs ds-pt-2 ds-mt-2']")
         run=self.driver.find_elements(By.XPATH,"//span[@class='ds-text-tight-s ds-font-regular ds-ml-1 ds-text-typo-mid2']")
+        overdetail=self.driver.find_elements(By.XPATH,"//div[@class='ds-flex ds-my-3 ds--ml-1 ds-flex-wrap']")
         for x in bowler:
             bowlers.append(x.text)
         for y in run:
             runs.append(y.text)
+        for m in overdetail:
+            d=m.text
+            d=d.replace("\n",",")
+            d=d.replace("•","0")
+            odetail.append(d)
         for z in range(len(runs)):
-            self.mains.append([bowlers[z],runs[z]])
+            self.mains.append([bowlers[z],runs[z],odetail[z]])
         print(self.mains)
     
     def manageData(self,bowlTeam1,bowlTeam2):
@@ -74,7 +81,6 @@ class Cricket:
         team1df.to_csv("Team1.csv",index=False)
         team2df.to_csv("Team2.csv",index=False)
         print("Dataframe loaded!!!")
-        
 
         
 
@@ -82,5 +88,5 @@ c1=Cricket()
 c1.setup()
 c1.clicking()
 c1.OverData()
-c1.manageData(["Mohammed Shami","Hardik Pandya","Varun Chakravarthy","Kuldeep Yadav","Axar Patel","Ravindra Jadeja"],["Kyle Jamieson","Will O'Rourke","Nathan Smith","Mitchell Santner","Rachin Ravindra","Michael Bracewell","Glenn Phillips"])
+c1.manageData(["Mohammed Shami","Hardik Pandya","Varun Chakravarthy","Kuldeep Yadav","Axar Patel","Ravindra Jadeja"],["Kyle Jamieson","Will O’Rourke","Nathan Smith","Mitchell Santner","Rachin Ravindra","Michael Bracewell","Glenn Phillips"])
 c1.loadDf()
