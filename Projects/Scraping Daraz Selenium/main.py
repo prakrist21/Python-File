@@ -11,7 +11,7 @@ class Daraz:
     mainlst=[]
     def __init__(self):
         self.driver=None
-        self.url="https://www.daraz.com.np/catalog/?page=1&q=Mobile&spm=a2a0e.tm80335409.search.d_go.28a3501fH3XmZX"
+        self.url="https://www.daraz.com.np/catalog/?page=1&q=laptop"
     
     def setup(self):
         options=webdriver.ChromeOptions()
@@ -51,7 +51,7 @@ class Daraz:
             df.to_csv("New.csv",index=False)
             quit()
         # Adjust page number accordingly 
-        elif "page=4" in new_url:
+        elif "page=20" in new_url:
             df.to_csv("New.csv",index=False)
             quit()
         self.url=new_url    
