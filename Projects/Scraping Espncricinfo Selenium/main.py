@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 import pandas as pd
+import Players1
 
 team1df=pd.DataFrame(columns=['Bowler','Runs','OverDetail'])
 team2df=pd.DataFrame(columns=['Bowler','Runs','OverDetail'])
@@ -17,7 +18,7 @@ class Cricket:
         options=webdriver.ChromeOptions()
         options.add_experimental_option("detach",True)
         self.driver=webdriver.Chrome(options=options)
-        self.driver.get("https://www.espncricinfo.com/series/icc-champions-trophy-2024-25-1459031/india-vs-new-zealand-final-1466428/match-overs-comparison")
+        self.driver.get("https://www.espncricinfo.com/series/new-zealand-vs-pakistan-2024-25-1443540/new-zealand-vs-pakistan-2nd-t20i-1443550/match-overs-comparison")
         time.sleep(2)
         self.driver.maximize_window()
         time.sleep(15)
@@ -26,6 +27,7 @@ class Cricket:
             self.driver.find_element(By.XPATH,"//button[@id='wzrk-cancel']").click()
         except:
             pass
+        time.sleep(2)
         
     def clicking(self):
         option=self.driver.find_elements(By.XPATH,"//td[@class='ds-min-w-max !ds-align-top']")
@@ -88,5 +90,5 @@ c1=Cricket()
 c1.setup()
 c1.clicking()
 c1.OverData()
-c1.manageData(["Mohammed Shami","Hardik Pandya","Varun Chakravarthy","Kuldeep Yadav","Axar Patel","Ravindra Jadeja"],["Kyle Jamieson","Will O’Rourke","Nathan Smith","Mitchell Santner","Rachin Ravindra","Michael Bracewell","Glenn Phillips"])
+c1.manageData(list(Players1.b1['Bowling']),list(Players1.b2['Bowling']))
 c1.loadDf()
