@@ -40,6 +40,12 @@ class Cricket:
             x.click()
         time.sleep(10)
 
+    def matchDetail(self):
+        matchdetail=self.driver.find_element(By.XPATH,"//div[@class='ds-text-tight-m ds-font-regular ds-text-typo-mid3']").text
+        matchno=matchdetail.split(' ')[0][:-2]
+        time.sleep(2)
+        return matchno
+
     def OverData(self):
         bowlers=[]
         runs=[]
@@ -88,6 +94,7 @@ class Cricket:
 
 c1=Cricket()
 c1.setup()
+matchno=c1.matchDetail()
 c1.clicking()
 c1.OverData()
 c1.manageData(list(Players1.b1['Bowling']),list(Players1.b2['Bowling']))
