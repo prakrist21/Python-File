@@ -51,7 +51,8 @@ class Cricket:
             team.append(x.text)
         
         time.sleep(2)
-        print(team)
+        return matchdetail
+        # print(team)
 
     def OverData(self):
         bowlers=[]
@@ -99,7 +100,7 @@ class Cricket:
 
 c1=Cricket()
 c1.setup()
-c1.matchDetail()
+detail=c1.matchDetail()
 c1.clicking()
 c1.OverData()
 c1.manageData(list(Players1.b1['Bowling']),list(Players1.b2['Bowling']))
