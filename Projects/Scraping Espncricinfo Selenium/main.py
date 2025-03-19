@@ -7,13 +7,14 @@ import Players1
 
 team1df=pd.DataFrame(columns=['Bowler','Runs','OverDetail'])
 team2df=pd.DataFrame(columns=['Bowler','Runs','OverDetail'])
+team=[]
+
 class Cricket:
     def __init__(self):
         self.driver=None
         self.mains=None
         self.team1=None
         self.team2=None
-        self.team=None
 
     def setup(self):
         options=webdriver.ChromeOptions()
@@ -42,15 +43,15 @@ class Cricket:
         time.sleep(10)
 
     def matchDetail(self):
-        self.team=[]
         matchdetail=self.driver.find_element(By.XPATH,"//div[@class='ds-text-tight-m ds-font-regular ds-text-typo-mid3']").text
         matchno=matchdetail.split(' ')[0][:-2]
-        self.team.append(matchno)
+        team.append(matchno)
         teams=self.driver.find_elements(By.XPATH,"//th[@class='ds-min-w-max']")
         for x in teams:
-            self.team.append(x.text)
+            team.append(x.text)
+        
         time.sleep(2)
-        return self.team
+        print(team)
 
     def OverData(self):
         bowlers=[]
@@ -98,8 +99,10 @@ class Cricket:
 
 c1=Cricket()
 c1.setup()
-Teamdetail=c1.matchDetail()
+c1.matchDetail()
 c1.clicking()
 c1.OverData()
 c1.manageData(list(Players1.b1['Bowling']),list(Players1.b2['Bowling']))
 c1.loadDf()
+
+print(team)
