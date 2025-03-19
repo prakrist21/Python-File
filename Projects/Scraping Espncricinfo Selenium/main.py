@@ -13,7 +13,8 @@ class Cricket:
         self.mains=None
         self.team1=None
         self.team2=None
-    
+        self.team=None
+
     def setup(self):
         options=webdriver.ChromeOptions()
         options.add_experimental_option("detach",True)
@@ -41,10 +42,15 @@ class Cricket:
         time.sleep(10)
 
     def matchDetail(self):
+        self.team=[]
         matchdetail=self.driver.find_element(By.XPATH,"//div[@class='ds-text-tight-m ds-font-regular ds-text-typo-mid3']").text
         matchno=matchdetail.split(' ')[0][:-2]
+        self.team.append(matchno)
+        teams=self.driver.find_elements(By.XPATH,"//th[@class='ds-min-w-max']")
+        for x in teams:
+            self.team.append(x.text)
         time.sleep(2)
-        return matchno
+        return self.team
 
     def OverData(self):
         bowlers=[]
@@ -90,11 +96,9 @@ class Cricket:
         team2df.to_csv("Team2.csv",index=False)
         print("Dataframe loaded!!!")
 
-        
-
 c1=Cricket()
 c1.setup()
-matchno=c1.matchDetail()
+Teamdetail=c1.matchDetail()
 c1.clicking()
 c1.OverData()
 c1.manageData(list(Players1.b1['Bowling']),list(Players1.b2['Bowling']))
