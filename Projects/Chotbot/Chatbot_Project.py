@@ -1,11 +1,11 @@
 import random
 name=input("Enter your name: ")
 print(f"{name}, Welcome to Chatbot. You can ask anything about our college.")
-dict={'name':['The name of the college is The British College'],
+dict={'name':['The name of the college is The Future College'],
       'hi':['Hello, How can I help you', 'Welcome, How may I help you'],
-      'principle':['The name of our Principle is Dr Pattrick M'],
+      'principle':['The name of our Principle is Mr.Smith'],
       'admission':['The admission will start from the second week of September. For more details contact us or visit our website www.www.com'],
-      'location':['Our college is located in Thapathali, Kathmandu, Nepal'],
+      'location':['Our college is located in Kathmandu, Nepal'],
       'facilities': ['We have different facilities like sports, cafe, library, VR room, etc'],
       'noreply':[f'Sorry {name} I am not trained for this',f'Hey {name}, I dont have an answer for this',f'Hey {name}, I dont have an reply for this']}
 agent=['Alex','John','Jimmy','Ryan','Denis','Roger']

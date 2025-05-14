@@ -119,7 +119,7 @@ for x in range(len(word)):
     guesslst.append("_")
 counters(c)
 print("Word: "," ".join(guesslst),"\nhint: ",hint)
-letter=input("Enter a alphabet: ")
+letter=input("Enter a alphabet: ").lower()
 
 while True:
     if letter in word:
@@ -139,4 +139,4 @@ while True:
     if guesslst.count('_')==0:
         print("Correct! You guessed it right")
         break
-    letter=input("Enter a alphabet: ")
+    letter=input("Enter a alphabet: ").lower()
