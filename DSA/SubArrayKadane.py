@@ -1,5 +1,5 @@
 import math
-def kadance(arr):
+def kadane(arr):
     maxm=0
     currentMax=0
     for x in range(len(arr)):
@@ -11,5 +11,5 @@ def kadance(arr):
 
 
 
-print(kadance([1,3,-5,6,-2,4,6,2,-3]))
-print(kadance([1,-2,3,4,5,6,-3]))
+print(kadane([1,3,-5,6,-2,4,6,2,-3]))
+print(kadane([1,-2,3,4,5,6,-3]))
