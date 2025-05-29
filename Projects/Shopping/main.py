@@ -90,6 +90,7 @@ class Shopping():
             if(newprice>0):
                 self.item[stock[index-1]][finalStock[finalIndex-1]][0]=newprice
                 print("Price has been set to ",newprice)
+                self.saveStocks()
             else:
                 print("Invalid self.price")
         
@@ -97,6 +98,7 @@ class Shopping():
             newStock=int(input("Enter the new stock remaining: "))
             self.item[stock[index-1]][finalStock[finalIndex-1]][1]=newStock
             print("Stock has been set to ",newStock)
+            self.saveStocks()
         
         elif valueChange==3:
             self.saveStocks()
