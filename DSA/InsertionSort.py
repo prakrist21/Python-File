@@ -4,9 +4,9 @@ def sorting(arr):
         prev=x-1
 
         while(prev>=0 and arr[prev]>curr):
-            arr[prev+1]=arr[prev]
+            arr[prev+1]=arr[prev] #1
             print(arr)
-            prev-=1
+            prev-=1 #0
         arr[prev+1]=curr
     print(arr)
 
