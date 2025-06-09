@@ -1,5 +1,5 @@
 def count(num):
-    # Counting 1 in the given integer(in binary).
+    # Count the number of set bits in an integer.
     count=0
     while(num>0):
         if((num&1)!=0):
